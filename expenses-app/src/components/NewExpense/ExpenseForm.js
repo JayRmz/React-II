@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 export default function ExpenseForm(props) {
+  const { onCancel } = props;
   const [userInput, setUserInput] = useState({
     enteredTitle: "",
     enteredAmount: "",
@@ -31,17 +32,23 @@ export default function ExpenseForm(props) {
 
     const expenseData = {
       title: userInput.enteredTitle,
-      amount: userInput.enteredAmount,
+      amount: +userInput.enteredAmount,
       date: new Date(userInput.enteredDate),
     };
 
     props.onSaveExpenseData(expenseData);
+
+    cancelFormHandler();
 
     setUserInput({
       enteredTitle: "",
       enteredAmount: "",
       enteredDate: "",
     });
+  };
+
+  const cancelFormHandler = () => {
+    onCancel();
   };
 
   return (
@@ -79,6 +86,9 @@ export default function ExpenseForm(props) {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={cancelFormHandler}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
