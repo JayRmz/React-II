@@ -8,23 +8,23 @@
 
 
 /* arrow functions */
-function printMyName(name) {
-    console.log(name)
-};
-printMyName('Jay');
+// function printMyName(name) {
+//     console.log(name)
+// };
+// printMyName('Jay');
 
-const myFunc = () => {
-    console.log('hello world! ');
-}
-myFunc();
+// const myFunc = () => {
+//     console.log('hello world! ');
+// }
+// myFunc();
 
-const printAgainMyName = name => {
-    console.log(`hello again ${name}`)
-}
-printAgainMyName('Jay')
+// const printAgainMyName = name => {
+//     console.log(`hello again ${name}`)
+// }
+// printAgainMyName('Jay')
 
-const multiply = number => number * 2
-console.log(multiply(2))
+// const multiply = number => number * 2
+// console.log(multiply(2))
 
 /*
     Classes 
