@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import ErrorModal from "../UI/ErrorModal";
 import styles from "./AddUser.module.css";
+import Wrapper from "../Helpers/Wrapper";
 
 export default function AddUser(props) {
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
+
   const { onAddUser } = props;
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
@@ -12,6 +16,7 @@ export default function AddUser(props) {
 
   const addUserHandler = (event) => {
     event.preventDefault();
+    console.log(nameInputRef);
 
     if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
       setError({
@@ -50,7 +55,7 @@ export default function AddUser(props) {
   };
 
   return (
-    <div>
+    <Wrapper>
       {error && (
         <ErrorModal
           title={error.title}
@@ -66,6 +71,7 @@ export default function AddUser(props) {
             type="text"
             value={enteredUsername}
             onChange={usernameChangeHandler}
+            ref={nameInputRef}
           />
 
           <label htmlFor="age">Age (years)</label>
@@ -74,11 +80,12 @@ export default function AddUser(props) {
             type="number"
             value={enteredAge}
             onChange={ageChangeHandler}
+            ref={ageInputRef}
           />
 
           <Button type="submit">Add User</Button>
         </form>
       </Card>
-    </div>
+    </Wrapper>
   );
 }
