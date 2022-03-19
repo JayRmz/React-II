@@ -23,8 +23,6 @@ const QuoteList = (props) => {
 
   const isSortingAsc = queryParams.get('sort') === 'asc'
 
-  console.log(location)
-
   const sortedQuotes = sortQuotes(quotes, isSortingAsc);
 
   const changeSortingHandler = () => {
