@@ -5,21 +5,12 @@ import useHttp from "../hooks/use-http";
 import { getAllQuotes } from '../lib/api';
 import NoQuotesFound from '../components/quotes/NoQuotesFound'
 
-const DUMMYQUOTES = [
-    { id: 'q1', author: 'Jay', text: 'Learning Swift is fun' },
-    { id: 'q2', author: 'Some Random Dev', text: 'Learning ReactJS is fun' },
-    { id: 'q3', author: 'Jay', text: 'Learning React Native is fun' },
-]
-
 const AllQuotes = () => {
-
-
     const { sendRequest, status, data: loadedQuotes, error } = useHttp(getAllQuotes, true);
 
     useEffect(() => {
         sendRequest()
     }, [sendRequest]);
-
 
     if (status === 'pending') {
         return (
